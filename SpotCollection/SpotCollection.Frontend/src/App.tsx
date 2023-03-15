@@ -23,7 +23,13 @@ function App() {
         })}
         <br/>
         <br/>
-        {location.find(x => x.id == 1)?.description}
+        {location.find(x => x.id == 1)?.description.split('Recommended')[0]}
+        <br/>
+        <br/>
+        {location.find(x => x.id == 1)?.description.split('pros!')[1].split('Type')[0]}
+        <br/>
+        <br/>
+        {location.find(x => x.id == 1)?.description.split('months.')[1]}
       </p>
       <br />
     </>
