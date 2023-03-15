@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sbvz6hcLwu+ea6yvhHPWr1HDgMn9mY6oPU/blJ/6Klk=",
+  "Source": "SpotCollection.Api",
+  "BasePath": "_content/SpotCollection.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
