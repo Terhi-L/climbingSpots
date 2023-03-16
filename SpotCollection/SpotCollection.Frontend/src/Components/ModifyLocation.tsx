@@ -1,11 +1,12 @@
 import { FC, SyntheticEvent, useState } from "react";
-import { IBook, IDescription, IImage, IRoute } from "../interfaces";
+import { IBook, IDescription, IImage, ILocation, IRoute } from "../interfaces";
 
 type modifyProps = {
   addDescription: (desc: IDescription) => void;
   addBook: (book: IBook) => void;
   addRoute: (book: IRoute) => void;
   addImage: (book: IImage) => void;
+  locations: ILocation[];
 };
 
 const ModifyLocation: FC<modifyProps> = ({
@@ -13,6 +14,7 @@ const ModifyLocation: FC<modifyProps> = ({
   addBook,
   addRoute,
   addImage,
+  locations,
 }) => {
   const [descSuccess, setDescSuccess] = useState<boolean>(false);
   const [bookSuccess, setBookSuccess] = useState<boolean>(false);
@@ -108,7 +110,12 @@ const ModifyLocation: FC<modifyProps> = ({
       <h3>Add a description:</h3>
       <form onSubmit={addDesc}>
         <label>Id of Location:</label>
-        <input type="text" name="id"></input>
+        <input type="text" name="id" list="suggestions"></input>
+        <datalist id="suggestions">
+          {locations.map((x) => (
+            <option key={x.id} value={`${x.name}: ${x.id}`}></option>
+          ))}
+        </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
         <label>Description:</label>
@@ -120,7 +127,12 @@ const ModifyLocation: FC<modifyProps> = ({
       <h3>Recommend a book:</h3>
       <form onSubmit={addNewBook}>
         <label>Id of Location:</label>
-        <input type="text" name="id"></input>
+        <input type="text" name="id" list="suggestions"></input>
+        <datalist id="suggestions">
+          {locations.map((x) => (
+            <option key={x.id} value={`${x.name}: ${x.id}`}></option>
+          ))}
+        </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>
@@ -132,7 +144,12 @@ const ModifyLocation: FC<modifyProps> = ({
       <h3>Your favourite climbing route:</h3>
       <form onSubmit={addNewRoute}>
         <label>Id of Location:</label>
-        <input type="text" name="id"></input>
+        <input type="text" name="id" list="suggestions"></input>
+        <datalist id="suggestions">
+          {locations.map((x) => (
+            <option key={x.id} value={`${x.name}: ${x.id}`}></option>
+          ))}
+        </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>
@@ -144,13 +161,12 @@ const ModifyLocation: FC<modifyProps> = ({
       <h3>Add/change image:</h3>
       <form onSubmit={addNewImage}>
         <label>Id of Location:</label>
-        <input type="text" name="id"></input>
-{/*         <datalist id="suggestions">
-        <option key={0} value="All"></option>
-        {locations.map((x) => (
-          <option key={x.id} value={x.name}></option>
-        ))}
-      </datalist> */}
+        <input type="text" name="id" list="suggestions"></input>
+        <datalist id="suggestions">
+          {locations.map((x) => (
+            <option key={x.id} value={`${x.name}: ${x.id}`}></option>
+          ))}
+        </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>

@@ -107,6 +107,7 @@ const Header: FC<addLocationProps> = ({
                     addImage={putImage}
                     addRoute={putRoute}
                     addDescription={putDesc}
+                    locations={locations}
                   />
                 }
               />
