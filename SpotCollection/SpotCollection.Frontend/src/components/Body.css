@@ -1,0 +1,54 @@
+header {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid white;
+    width: 100%;
+}
+
+main {
+    padding: 45px;
+    background-color: var(--third-color);
+    width: 93%;
+}
+
+.besideImage {
+    padding-top: 50%;
+    background-color: var(--third-color);
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    top: 38%;
+    left: 30%;
+    position: absolute;
+    color: white;
+    text-shadow: -3px 3px 0 #7B2869;
+}
+
+.headerDescription {
+    padding-left: 35px;
+    padding-right: 35px;
+    font-style: italic;
+}
+
+.addLink {
+    gap: 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #EAE7B1;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    color: black;
+}
+
+.addLink:hover {
+    color: #EAE7B1;
+    background-color: #61876E;
+    border-color: #EAE7B1;
+}

@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { IBook, IDescription, IImage, ILocation, IRoute } from "../interfaces";
 import AddLocation from "./AddLocation";
-import Location from "./Location";
 import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
-import App from "../App";
 import ModifyLocation from "./ModifyLocation";
 import Gallery from "./Gallery";
+import "./Body.css";
+import romsdal from "../images/romsdal.jpeg";
 
 type addLocationProps = {
   addLocation: (loc: Partial<ILocation>) => void;
@@ -52,47 +52,59 @@ const Header: FC<addLocationProps> = ({
 
   return (
     <>
-      <h1>Favourite Climbing Spots -Collection</h1>
-      <p>
-        A collection of favorite climbing spots along with a collection of
-        favorite wall at each location.
-        <br />
-        Add yours in and let's share our best tips!
-      </p>
-      <nav>
-        <BrowserRouter>
-          {display && (
-            <Link to="/addlocation" onClick={displayLocations}>
-              Add a location
-            </Link>
-          )}
-          <br />
-          {display && (
-            <Link to="/modifylocation" onClick={displayLocations}>
-              Modify a location
-            </Link>
-          )}
-          {!display && (
-            <Link to="/" onClick={displayLocations}>
-              Hide form
-            </Link>
-          )}
-          <Routes>
-            <Route
-              path="/addlocation"
-              element={<AddLocation location={postData} />}
-            />
-            <Route
-              path="/modifylocation"
-              element={
-                <ModifyLocation addBook={putBook} addImage={putImage} addRoute={putRoute} addDescription={putDesc} />
-              }
-            />
-            <Route path="/" element={<Outlet />} />
-          </Routes>
-        </BrowserRouter>
-      </nav>
-      {display && <Gallery locations={locations} />}
+      <header>
+        <img src={romsdal} alt="" />
+        <section className="besideImage">
+          <h1>Favourite Climbing Spots -Collection</h1>
+          <p className="headerDescription">
+            A collection of favorite climbing spots along with a collection of
+            favorite wall at each location.
+            <br />
+            Add yours in and let's share our best tips!
+          </p>
+        </section>
+      </header>
+      <main>
+        <nav>
+          <BrowserRouter>
+            {display && (
+              <Link className="addLink" to="/addlocation" onClick={displayLocations}>
+                Add a location
+              </Link>
+            )}
+            <br />
+            {display && (
+              <Link className="addLink" to="/modifylocation" onClick={displayLocations}>
+                Modify a location
+              </Link>
+            )}
+            {!display && (
+              <Link to="/" onClick={displayLocations}>
+                Hide form
+              </Link>
+            )}
+            <Routes>
+              <Route
+                path="/addlocation"
+                element={<AddLocation location={postData} />}
+              />
+              <Route
+                path="/modifylocation"
+                element={
+                  <ModifyLocation
+                    addBook={putBook}
+                    addImage={putImage}
+                    addRoute={putRoute}
+                    addDescription={putDesc}
+                  />
+                }
+              />
+              <Route path="/" element={<Outlet />} />
+            </Routes>
+          </BrowserRouter>
+        </nav>
+        {display && <Gallery locations={locations} />}
+      </main>
     </>
   );
 };
