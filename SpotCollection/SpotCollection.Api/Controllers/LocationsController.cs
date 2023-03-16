@@ -42,7 +42,7 @@ namespace SpotCollection.Api.Controllers
         }
 
         [HttpPut("{id}/description")]
-        public ActionResult<Location> ModifyDescription(AddDescriptionRequest request)
+        public IActionResult ModifyDescription(AddDescriptionRequest request)
         {
             var location = _context.Location.Where(location => location.Name == request.Name).FirstOrDefault();
             if (request is null || location is null)
@@ -59,7 +59,7 @@ namespace SpotCollection.Api.Controllers
 
             location.Description = request.Description;
             _context.SaveChanges();
-            return location;
+            return Ok(location);
         }
 
         [HttpPut("{id}/recommendedBook")]
