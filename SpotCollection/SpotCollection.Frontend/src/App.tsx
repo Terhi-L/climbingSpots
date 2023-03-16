@@ -19,17 +19,25 @@ function App() {
     <>
       <p>
         {location.map((x) => {
-          return (`${x.name}, ${x.country}`);
+          return `${x.name}, ${x.country}`;
         })}
-        <br/>
-        <br/>
-        {location.find(x => x.id == 1)?.description.split('Recommended')[0]}
-        <br/>
-        <br/>
-        {location.find(x => x.id == 1)?.description.split('pros!')[1].split('Type')[0]}
-        <br/>
-        <br/>
-        {location.find(x => x.id == 1)?.description.split('months.')[1]}
+        <br />
+        <br />
+        {location.find((x) => x.id == 1)?.description.split("Recommended")[0]}
+        <br />
+        <br />
+        {
+          location
+            .find((x) => x.id == 1)
+            ?.description.split("pros!")[1]
+            .split("Type")[0]
+        }
+        <br />
+        <br />
+        {location.find((x) => x.id == 1)?.description.split("months.")[1]}
+        <br />
+        <br />
+        Favorite route: {location.find((x) => x.id == 1)?.favoriteRoute}
       </p>
       <br />
     </>
