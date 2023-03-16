@@ -14,12 +14,13 @@ type addLocationProps = {
 
 const Header: FC<addLocationProps> = ({ addLocation, addDescription, locations }) => {
   const [display, setDisplay] = useState<boolean>(true);
+
   const postData = async (addedLocation: Partial<ILocation>) => {
     addLocation(addedLocation);
   };
 
   const putDesc = async (desc: IDescription) => {
-    addLocation(desc);
+    addDescription(desc);
   };
 
   const displayLocations = () => {

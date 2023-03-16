@@ -6,7 +6,7 @@ type addLocationProps = {
 };
 
 const AddLocation: FC<addLocationProps> = ({ location }) => {
-    const [display, setDisplay] = useState<boolean>();
+
   const addLocation = (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {

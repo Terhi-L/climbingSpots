@@ -1,11 +1,11 @@
 import { FC, SyntheticEvent } from "react";
 import { IDescription } from "../api";
 
-type modify = {
+type modifyProps = {
   addDescription: (desc: IDescription) => void;
 };
 
-const ModifyLocation: FC<modify> = ({ addDescription }) => {
+const ModifyLocation: FC<modifyProps> = ({ addDescription }) => {
   const addLocation = (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -19,6 +19,8 @@ const ModifyLocation: FC<modify> = ({ addDescription }) => {
       name: target.name.value,
       description: target.description.value,
     };
+
+    console.log(newDesc);
     addDescription(newDesc);
   };
 

@@ -41,6 +41,70 @@ export const modifyDescription = async (addedDescription: IDescription) => {
     name: addedDescription.name,
     description: addedDescription.description,
   };
+  
+  const added = await fetch(
+    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    {
+      method: "PUT",
+      body: JSON.stringify(request),
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => data);
+  return added;
+};
+
+export const modifyImage = async (addedDescription: IDescription) => {
+  const request = {
+    name: addedDescription.name,
+    description: addedDescription.description,
+  };
+
+  const added = await fetch(
+    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    {
+      method: "PUT",
+      body: JSON.stringify(request),
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => data);
+  return added;
+};
+
+export const modifyRoute = async (addedDescription: IDescription) => {
+  const request = {
+    name: addedDescription.name,
+    description: addedDescription.description,
+  };
+
+  const added = await fetch(
+    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    {
+      method: "PUT",
+      body: JSON.stringify(request),
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => data);
+  return added;
+};
+
+export const modifyBook = async (addedDescription: IDescription) => {
+  const request = {
+    name: addedDescription.name,
+    description: addedDescription.description,
+  };
+
   const added = await fetch(
     `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
     {

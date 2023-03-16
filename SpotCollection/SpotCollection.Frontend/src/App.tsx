@@ -15,6 +15,7 @@ function App() {
   const fetchData = async () => {
     const locations = await getLocations();
     setLocations(locations);
+    console.log(locations);
   };
 
   const postData = async (addedLocation: Partial<ILocation>) => {
@@ -23,9 +24,12 @@ function App() {
   };
 
   const putDesc = async (desc: IDescription) => {
-    await modifyDescription(desc);
-    const newData = locations.map((x) => x.id == desc.id);
-    console.log(newData);
+    const modified = await modifyDescription(desc);
+    locations.map((x) => {
+      if (x.id === modified.id) {
+        x.description = modified.description;
+      }
+    });
   };
 
   useEffect(() => {
@@ -34,7 +38,11 @@ function App() {
 
   return (
     <>
-      <Header locations={locations} addLocation={postData} addDescription={putDesc} />
+      <Header
+        locations={locations}
+        addLocation={postData}
+        addDescription={putDesc}
+      />
     </>
   );
 }
