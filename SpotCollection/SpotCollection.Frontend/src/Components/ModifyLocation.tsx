@@ -152,7 +152,7 @@ const ModifyLocation: FC<modifyProps> = ({
         </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
-        <label>Book to recommend:</label>
+        <label>Your best crag:</label>
         <input type="text" name="favoriteRoute"></input>
         <input className="submitButton" type="submit"></input>
       </form>
@@ -169,7 +169,7 @@ const ModifyLocation: FC<modifyProps> = ({
         </datalist>
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
-        <label>Book to recommend:</label>
+        <label>Image to Add:</label>
         <input type="text" name="image"></input>
         <input className="submitButton" type="submit"></input>
       </form>
