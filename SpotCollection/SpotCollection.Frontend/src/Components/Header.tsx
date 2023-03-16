@@ -68,21 +68,32 @@ const Header: FC<addLocationProps> = ({
         <nav>
           <BrowserRouter>
             {display && (
-              <Link className="addLink" to="/addlocation" onClick={displayLocations}>
+              <Link
+                className="addLink"
+                to="/addlocation"
+                onClick={displayLocations}
+              >
                 Add a location
               </Link>
             )}
             <br />
-            {display && (
-              <Link className="addLink" to="/modifylocation" onClick={displayLocations}>
-                Modify a location
-              </Link>
-            )}
-            {!display && (
-              <Link to="/" onClick={displayLocations}>
-                Hide form
-              </Link>
-            )}
+            <br />
+            <div className="groupLinks">
+              {display && (
+                <Link
+                  className="addLink"
+                  to="/modifylocation"
+                  onClick={displayLocations}
+                >
+                  Modify a location
+                </Link>
+              )}
+              {!display && (
+                <Link className="addLink" to="/" onClick={displayLocations}>
+                  Hide form
+                </Link>
+              )}
+            </div>
             <Routes>
               <Route
                 path="/addlocation"

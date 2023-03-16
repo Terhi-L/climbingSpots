@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useState } from "react";
+import { FC, SyntheticEvent, useEffect, useState } from "react";
 import { ILocation } from "../interfaces";
 
 type addLocationProps = {
@@ -6,7 +6,7 @@ type addLocationProps = {
 };
 
 const AddLocation: FC<addLocationProps> = ({ location }) => {
-
+  const [success, setSuccess] = useState<boolean>(false);
   const addLocation = (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -28,6 +28,11 @@ const AddLocation: FC<addLocationProps> = ({ location }) => {
       favoriteRoute: target.favoriteRoute.value,
     };
     location(newLocation);
+    setSuccess(true);
+    const timer = setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   };
 
   return (
@@ -45,8 +50,9 @@ const AddLocation: FC<addLocationProps> = ({ location }) => {
         <input type="text" name="image"></input>
         <label>What is your favourite climbing route?</label>
         <input type="text" name="favoriteRoute"></input>
-        <input type="submit"></input>
+        <input className="submitButton" type="submit"></input>
       </form>
+      {success && <p>✅ Success!</p>}
     </>
   );
 };

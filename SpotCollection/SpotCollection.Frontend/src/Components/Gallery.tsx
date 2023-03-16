@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import Location from "./Location";
 import { ILocation } from "../interfaces";
+import "./Body.css";
 
 type Locationprops = {
   locations: ILocation[];
@@ -27,7 +28,7 @@ const Gallery: FC<Locationprops> = ({ locations }) => {
   };
 
   return (
-    <section>
+    <section className="bodyText">
         <p>Search by location:</p>
       <input
         list="suggestions"

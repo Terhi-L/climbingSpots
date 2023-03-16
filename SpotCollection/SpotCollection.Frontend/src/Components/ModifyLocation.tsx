@@ -1,5 +1,5 @@
-import { FC, SyntheticEvent } from "react";
-import { IBook, IDescription, IImage, IRoute } from "../api";
+import { FC, SyntheticEvent, useState } from "react";
+import { IBook, IDescription, IImage, IRoute } from "../interfaces";
 
 type modifyProps = {
   addDescription: (desc: IDescription) => void;
@@ -8,7 +8,17 @@ type modifyProps = {
   addImage: (book: IImage) => void;
 };
 
-const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, addImage }) => {
+const ModifyLocation: FC<modifyProps> = ({
+  addDescription,
+  addBook,
+  addRoute,
+  addImage,
+}) => {
+  const [descSuccess, setDescSuccess] = useState<boolean>(false);
+  const [bookSuccess, setBookSuccess] = useState<boolean>(false);
+  const [imageSuccess, setImageSuccess] = useState<boolean>(false);
+  const [routeSuccess, setRouteSuccess] = useState<boolean>(false);
+
   const addDesc = (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -23,6 +33,11 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
       description: target.description.value,
     };
     addDescription(newDesc);
+    setDescSuccess(true);
+    const timer = setTimeout(() => {
+      setDescSuccess(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   };
 
   const addNewBook = (e: SyntheticEvent) => {
@@ -39,6 +54,11 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
       recommendedBook: target.recommendedBook.value,
     };
     addBook(newBook);
+    setBookSuccess(true);
+    const timer = setTimeout(() => {
+      setBookSuccess(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   };
 
   const addNewRoute = (e: SyntheticEvent) => {
@@ -55,6 +75,11 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
       favoriteRoute: target.favoriteRoute.value,
     };
     addRoute(newRoute);
+    setRouteSuccess(true);
+    const timer = setTimeout(() => {
+      setRouteSuccess(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   };
 
   const addNewImage = (e: SyntheticEvent) => {
@@ -71,6 +96,11 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
       image: target.image.value,
     };
     addImage(newImage);
+    setImageSuccess(true);
+    const timer = setTimeout(() => {
+      setImageSuccess(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   };
 
   return (
@@ -83,8 +113,9 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
         <input type="text" name="name"></input>
         <label>Description:</label>
         <input type="text" name="description"></input>
-        <input type="submit"></input>
+        <input className="submitButton" type="submit"></input>
       </form>
+      {descSuccess && <p>✅ Success!</p>}
 
       <h3>Recommend a book:</h3>
       <form onSubmit={addNewBook}>
@@ -94,8 +125,9 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>
         <input type="text" name="recommendedBook"></input>
-        <input type="submit"></input>
+        <input className="submitButton" type="submit"></input>
       </form>
+      {bookSuccess && <p>✅ Success!</p>}
 
       <h3>Your favourite climbing route:</h3>
       <form onSubmit={addNewRoute}>
@@ -105,19 +137,27 @@ const ModifyLocation: FC<modifyProps> = ({ addDescription, addBook, addRoute, ad
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>
         <input type="text" name="favoriteRoute"></input>
-        <input type="submit"></input>
+        <input className="submitButton" type="submit"></input>
       </form>
+      {routeSuccess && <p>✅ Success!</p>}
 
       <h3>Add/change image:</h3>
       <form onSubmit={addNewImage}>
         <label>Id of Location:</label>
         <input type="text" name="id"></input>
+{/*         <datalist id="suggestions">
+        <option key={0} value="All"></option>
+        {locations.map((x) => (
+          <option key={x.id} value={x.name}></option>
+        ))}
+      </datalist> */}
         <label>Name of Location:</label>
         <input type="text" name="name"></input>
         <label>Book to recommend:</label>
         <input type="text" name="image"></input>
-        <input type="submit"></input>
+        <input className="submitButton" type="submit"></input>
       </form>
+      {imageSuccess && <p>✅ Success!</p>}
     </>
   );
 };

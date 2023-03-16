@@ -9,19 +9,9 @@
   -webkit-text-size-adjust: 100%;
   color: #213547;
   background-color: #E3DFFD;
-    --first-color: #ECF2FF;
-    --second-color: #E3DFFD;
-    --third-color: #E5D1FA;
-}
-
-a {
-  font-weight: 500;
-  color: #EAE7B1;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #3C6255;
+  --first-color: #ECF2FF;
+  --second-color: #E3DFFD;
+  --third-color: #E5D1FA;
 }
 
 body {
@@ -29,7 +19,7 @@ body {
   min-height: 100vh;
 }
 
-button {
+button, .submitButton, a {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 10px 15px;
@@ -39,10 +29,28 @@ button {
   background-color: #EAE7B1;
   cursor: pointer;
   transition: 0.25s ease-in-out;
+  text-decoration: inherit;
 }
 
-button:hover {
-  color: #EAE7B1;
-  background-color: #61876E;
-  border-color: #EAE7B1;
+button:hover, .submitButton:hover, a:hover {
+  color: var(--third-color);
+  background-color: #6398E0;
+  border-color: var(--third-color);
 }
+
+
+input {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 15px;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 8px;
+}
+

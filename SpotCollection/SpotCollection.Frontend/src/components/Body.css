@@ -7,9 +7,14 @@ header {
 }
 
 main {
-    padding: 45px;
+    padding: 46px;
+    margin-left: 5px;
     background-color: var(--third-color);
-    width: 93%;
+    border: 3px solid white;
+}
+
+.bodyText {
+    margin-top: -80px;
 }
 
 .besideImage {
@@ -34,21 +39,6 @@ h1 {
 }
 
 .addLink {
-    gap: 20px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 10px 15px;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #EAE7B1;
-    cursor: pointer;
-    transition: 0.25s ease-in-out;
+    margin-left: 80%;
     color: black;
-}
-
-.addLink:hover {
-    color: #EAE7B1;
-    background-color: #61876E;
-    border-color: #EAE7B1;
 }
