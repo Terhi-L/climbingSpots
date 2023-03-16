@@ -1,18 +1,5 @@
-export interface ILocation {
-  id: number;
-  name: string;
-  country: string;
-  description: string;
-  recommendedBook: string;
-  image: string;
-  favoriteRoute: string;
-}
+import { IBook, IDescription, IImage, ILocation, IRoute } from "./interfaces";
 
-export interface IDescription {
-  id: number;
-  name: string;
-  description: string;
-}
 
 export const getLocations = async () => {
   const locations: ILocation[] = await fetch(
@@ -57,14 +44,14 @@ export const modifyDescription = async (addedDescription: IDescription) => {
   return added;
 };
 
-export const modifyImage = async (addedDescription: IDescription) => {
+export const modifyImage = async (addedImage: IImage) => {
   const request = {
-    name: addedDescription.name,
-    description: addedDescription.description,
+    name: addedImage.name,
+    image: addedImage.image,
   };
 
   const added = await fetch(
-    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    `http://localhost:5080/api/Locations/${addedImage.id}/image`,
     {
       method: "PUT",
       body: JSON.stringify(request),
@@ -78,14 +65,14 @@ export const modifyImage = async (addedDescription: IDescription) => {
   return added;
 };
 
-export const modifyRoute = async (addedDescription: IDescription) => {
+export const modifyRoute = async (addedRoute: IRoute) => {
   const request = {
-    name: addedDescription.name,
-    description: addedDescription.description,
+    name: addedRoute.name,
+    favoriteRoute: addedRoute.favoriteRoute,
   };
 
   const added = await fetch(
-    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    `http://localhost:5080/api/Locations/${addedRoute.id}/favoriteRoute`,
     {
       method: "PUT",
       body: JSON.stringify(request),
@@ -99,14 +86,14 @@ export const modifyRoute = async (addedDescription: IDescription) => {
   return added;
 };
 
-export const modifyBook = async (addedDescription: IDescription) => {
+export const modifyBook = async (addedBook: IBook) => {
   const request = {
-    name: addedDescription.name,
-    description: addedDescription.description,
+    name: addedBook.name,
+    recommendedBook: addedBook.recommendedBook,
   };
 
   const added = await fetch(
-    `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
+    `http://localhost:5080/api/Locations/${addedBook.id}/recommendedBook`,
     {
       method: "PUT",
       body: JSON.stringify(request),

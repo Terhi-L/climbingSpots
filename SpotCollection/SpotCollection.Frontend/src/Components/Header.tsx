@@ -1,18 +1,29 @@
 import { FC, useState } from "react";
-import { IDescription, ILocation } from "../api";
+import { IBook, IDescription, IImage, ILocation, IRoute } from "../interfaces";
 import AddLocation from "./AddLocation";
 import Location from "./Location";
 import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import App from "../App";
 import ModifyLocation from "./ModifyLocation";
+import Gallery from "./Gallery";
 
 type addLocationProps = {
   addLocation: (loc: Partial<ILocation>) => void;
   addDescription: (desc: IDescription) => void;
+  addBook: (book: IBook) => void;
+  addRoute: (book: IRoute) => void;
+  addImage: (book: IImage) => void;
   locations: ILocation[];
 };
 
-const Header: FC<addLocationProps> = ({ addLocation, addDescription, locations }) => {
+const Header: FC<addLocationProps> = ({
+  addLocation,
+  addDescription,
+  addBook,
+  addRoute,
+  addImage,
+  locations,
+}) => {
   const [display, setDisplay] = useState<boolean>(true);
 
   const postData = async (addedLocation: Partial<ILocation>) => {
@@ -21,6 +32,18 @@ const Header: FC<addLocationProps> = ({ addLocation, addDescription, locations }
 
   const putDesc = async (desc: IDescription) => {
     addDescription(desc);
+  };
+
+  const putBook = async (book: IBook) => {
+    addBook(book);
+  };
+
+  const putRoute = async (route: IRoute) => {
+    addRoute(route);
+  };
+
+  const putImage = async (image: IImage) => {
+    addImage(image);
   };
 
   const displayLocations = () => {
@@ -59,12 +82,17 @@ const Header: FC<addLocationProps> = ({ addLocation, addDescription, locations }
               path="/addlocation"
               element={<AddLocation location={postData} />}
             />
-            <Route path="/modifylocation" element={<ModifyLocation addDescription={putDesc}/>} />
+            <Route
+              path="/modifylocation"
+              element={
+                <ModifyLocation addBook={putBook} addImage={putImage} addRoute={putRoute} addDescription={putDesc} />
+              }
+            />
             <Route path="/" element={<Outlet />} />
           </Routes>
         </BrowserRouter>
       </nav>
-      {display && <Location locations={locations} />}
+      {display && <Gallery locations={locations} />}
     </>
   );
 };

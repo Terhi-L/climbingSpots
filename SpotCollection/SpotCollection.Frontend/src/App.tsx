@@ -3,10 +3,12 @@ import "./App.css";
 import {
   addLocation,
   getLocations,
-  IDescription,
-  ILocation,
+  modifyBook,
   modifyDescription,
+  modifyImage,
+  modifyRoute,
 } from "./api";
+import { IBook, IDescription, IImage, ILocation, IRoute } from "./interfaces";
 import Header from "./components/Header";
 
 function App() {
@@ -15,7 +17,6 @@ function App() {
   const fetchData = async () => {
     const locations = await getLocations();
     setLocations(locations);
-    console.log(locations);
   };
 
   const postData = async (addedLocation: Partial<ILocation>) => {
@@ -32,6 +33,33 @@ function App() {
     });
   };
 
+  const putBook = async (book: IBook) => {
+    const modified = await modifyBook(book);
+    locations.map((x) => {
+      if (x.id === modified.id) {
+        x.recommendedBook = modified.recommendedBook;
+      }
+    });
+  };
+
+  const putRoute = async (route: IRoute) => {
+    const modified = await modifyRoute(route);
+    locations.map((x) => {
+      if (x.id === modified.id) {
+        x.favoriteRoute = modified.favoriteRoute;
+      }
+    });
+  };
+
+  const putImage = async (image: IImage) => {
+    const modified = await modifyImage(image);
+    locations.map((x) => {
+      if (x.id === modified.id) {
+        x.image = modified.image;
+      }
+    });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -42,6 +70,9 @@ function App() {
         locations={locations}
         addLocation={postData}
         addDescription={putDesc}
+        addBook={putBook}
+        addImage={putImage}
+        addRoute={putRoute}
       />
     </>
   );

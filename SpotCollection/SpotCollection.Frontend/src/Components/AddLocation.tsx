@@ -1,5 +1,5 @@
 import { FC, SyntheticEvent, useState } from "react";
-import { ILocation } from "../api";
+import { ILocation } from "../interfaces";
 
 type addLocationProps = {
   location: (loc: Partial<ILocation>) => void;
@@ -27,7 +27,6 @@ const AddLocation: FC<addLocationProps> = ({ location }) => {
       image: target.image.value,
       favoriteRoute: target.favoriteRoute.value,
     };
-
     location(newLocation);
   };
 

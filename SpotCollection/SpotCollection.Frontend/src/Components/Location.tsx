@@ -1,42 +1,30 @@
 import { FC } from "react";
-import { ILocation } from "../api";
+import { ILocation } from "../interfaces";
 
 type Locationprops = {
   locations: ILocation[];
 };
 
 const Location: FC<Locationprops> = ({ locations }) => {
-  /*     Location: Location can be hidden to view others
-   */
+
   return (
     <>
-      <h3>Locations:</h3>
-      {locations.map((x) => (
+     {locations.map((x) => (
         <p key={x.id}>
           {x.name}, {x.country}
         </p>
       ))}
-      <h4>Location Lofoten:</h4>
-      {locations.find((x) => x.id == 1)?.name},{" "}
-      {locations.find((x) => x.id == 1)?.country}
-      <br />
-      <br />
-      {locations.find((x) => x.id == 1)?.description.split("Recommended")[0]}
-      <br />
-      <br />
-      {
-        locations
-          .find((x) => x.id == 1)
-          ?.description.split("pros!")[1]
-          .split("Type")[0]
-      }
-      <br />
-      <br />
-      {locations.find((x) => x.id == 1)?.description.split("months.")[1]}
-      <br />
-      <br />
-      Favorite route: {locations.find((x) => x.id == 1)?.favoriteRoute}
-      <br />
+      {locations.map((x) => (
+        <section key={x.id}>
+          <h4>
+            {x.name}, {x.country}
+          </h4>
+          <h5>Description:</h5>
+          <p>{x.description}</p>
+          <p>Recommended book: {x.recommendedBook}</p>
+          <p>Favourite route: {x.favoriteRoute}</p>
+        </section>
+      ))}
     </>
   );
 };
