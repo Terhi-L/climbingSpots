@@ -41,24 +41,77 @@ namespace SpotCollection.Api.Controllers
             return location;
         }
 
-        // PUT: api/Locations/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPatch("{id}")]
-        public ActionResult<Location> ModifyLocation(AddLocationRequest request)
+        [HttpPut("{id}/description")]
+        public ActionResult<Location> ModifyDescription(AddDescriptionRequest request)
         {
-            var location = _context.Location.Where(location => location.Name == request.Name).Where(country => country.Country == request.Country).FirstOrDefault();
-            if (location is null || request is null)
+            var location = _context.Location.Where(location => location.Name == request.Name).FirstOrDefault();
+            if (request is null || location is null)
             {
                 return BadRequest();
             }
-            if (request.Name != null || request.Name != "string") location.Name = request.Name!;
-            if (request.Country != null || request.Country != "string") location.Country = request.Country!;
-            if (request.Description != null || request.Description != "string") location.Description = request.Description;
-            if (request.RecommendedBook != null || request.RecommendedBook != "string") location.RecommendedBook = request.RecommendedBook;
-            if (request.Image != null || request.Image != "string") location.Image = request.Image;
-            if (request.FavoriteRoute != null || request.FavoriteRoute != "string") location.FavoriteRoute = request.FavoriteRoute;
 
-            _context.Entry(location).State = EntityState.Modified;
+            if (location.Description is null)
+            {
+                location.Description = request.Description;
+                _context.SaveChanges();
+                return Created(nameof(GetLocation), location);
+            }
+
+            location.Description = request.Description;
+            _context.SaveChanges();
+            return location;
+        }
+
+        [HttpPut("{id}/recommendedBook")]
+        public ActionResult<Location> ModifyBook(AddBookRequest request)
+        {
+            var location = _context.Location.Where(location => location.Name == request.Name).FirstOrDefault();
+            if (request is null || location is null) return BadRequest();
+
+            if (location.RecommendedBook is null)
+            {
+                location.RecommendedBook = request.RecommendedBook;
+                _context.SaveChanges();
+                return Created(nameof(GetLocation), location);
+            }
+
+            location.RecommendedBook = request.RecommendedBook;
+            _context.SaveChanges();
+            return location;
+        }
+
+        [HttpPut("{id}/image")]
+        public ActionResult<Location> ModifyImage(AddImageRequest request)
+        {
+            var location = _context.Location.Where(location => location.Name == request.Name).FirstOrDefault();
+            if (request is null || location is null) return BadRequest();
+
+            if (location.Image is null)
+            {
+                location.Image = request.Image;
+                _context.SaveChanges();
+                return Created(nameof(GetLocation), location);
+            }
+
+            location.Image = request.Image;
+            _context.SaveChanges();
+            return location;
+        }
+
+        [HttpPut("{id}/favoriteRoute")]
+        public ActionResult<Location> ModifyFavoriteRoute(AddRouteRequest request)
+        {
+            var location = _context.Location.Where(location => location.Name == request.Name).FirstOrDefault();
+            if (request is null || location is null) return BadRequest();
+
+            if (location.FavoriteRoute is null)
+            {
+                location.FavoriteRoute = request.FavoriteRoute;
+                _context.SaveChanges();
+                return Created(nameof(GetLocation), location);
+            }
+
+            location.FavoriteRoute = request.FavoriteRoute;
             _context.SaveChanges();
             return location;
         }
@@ -66,6 +119,8 @@ namespace SpotCollection.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Location>> PostLocation(AddLocationRequest request)
         {
+            if (request is null) return BadRequest();
+
             var newLocation = new Location
             {
                 Name = request.Name,
@@ -75,18 +130,20 @@ namespace SpotCollection.Api.Controllers
                 Image = request.Image,
                 FavoriteRoute = request.FavoriteRoute,
             };
+
             _context.Location.Add(newLocation);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetLocation), new { id = newLocation.Id }, newLocation);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLocation(string name)
         {
+            if (name is null) return BadRequest();
+
             var location = _context.Location.Where(location => location.Name == name).FirstOrDefault();
             if (location is null) return NotFound();
-            
+
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
             return NoContent();
