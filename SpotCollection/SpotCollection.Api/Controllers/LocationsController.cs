@@ -20,104 +20,76 @@ namespace SpotCollection.Api.Controllers
             _context = context;
         }
 
-        // GET: api/Locations
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Location>>> GetLocation()
         {
-          if (_context.Location == null)
-          {
-              return NotFound();
-          }
-            return await _context.Location.ToListAsync();
-        }
-
-        // GET: api/Locations/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Location>> GetLocation(int id)
-        {
-          if (_context.Location == null)
-          {
-              return NotFound();
-          }
-            var location = await _context.Location.FindAsync(id);
-
-            if (location == null)
+            if (_context.Location is null)
             {
                 return NotFound();
             }
+            return await _context.Location.ToListAsync();
+        }
 
+        [HttpGet("{id}")]
+        public ActionResult<Location> GetLocation(string name)
+        {
+            var location = _context.Location.Where(location => location.Name == name).FirstOrDefault();
+            if (location is null)
+            {
+                return NotFound();
+            }
             return location;
         }
 
         // PUT: api/Locations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLocation(int id, Location location)
+        [HttpPatch("{id}")]
+        public ActionResult<Location> ModifyLocation(AddLocationRequest request)
         {
-            if (id != location.Id)
+            var location = _context.Location.Where(location => location.Name == request.Name).Where(country => country.Country == request.Country).FirstOrDefault();
+            if (location is null || request is null)
             {
                 return BadRequest();
             }
+            if (request.Name != null || request.Name != "string") location.Name = request.Name!;
+            if (request.Country != null || request.Country != "string") location.Country = request.Country!;
+            if (request.Description != null || request.Description != "string") location.Description = request.Description;
+            if (request.RecommendedBook != null || request.RecommendedBook != "string") location.RecommendedBook = request.RecommendedBook;
+            if (request.Image != null || request.Image != "string") location.Image = request.Image;
+            if (request.FavoriteRoute != null || request.FavoriteRoute != "string") location.FavoriteRoute = request.FavoriteRoute;
 
             _context.Entry(location).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LocationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            _context.SaveChanges();
+            return location;
         }
 
-        // POST: api/Locations
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Location>> PostLocation(Location location)
+        public async Task<ActionResult<Location>> PostLocation(AddLocationRequest request)
         {
-          if (_context.Location == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Location'  is null.");
-          }
-            _context.Location.Add(location);
+            var newLocation = new Location
+            {
+                Name = request.Name,
+                Country = request.Country,
+                Description = request.Description,
+                RecommendedBook = request.RecommendedBook,
+                Image = request.Image,
+                FavoriteRoute = request.FavoriteRoute,
+            };
+            _context.Location.Add(newLocation);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocation", new { id = location.Id }, location);
+            return CreatedAtAction(nameof(GetLocation), new { id = newLocation.Id }, newLocation);
         }
 
-        // DELETE: api/Locations/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLocation(int id)
+        public async Task<IActionResult> DeleteLocation(string name)
         {
-            if (_context.Location == null)
-            {
-                return NotFound();
-            }
-            var location = await _context.Location.FindAsync(id);
-            if (location == null)
-            {
-                return NotFound();
-            }
-
+            var location = _context.Location.Where(location => location.Name == name).FirstOrDefault();
+            if (location is null) return NotFound();
+            
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool LocationExists(int id)
-        {
-            return (_context.Location?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
