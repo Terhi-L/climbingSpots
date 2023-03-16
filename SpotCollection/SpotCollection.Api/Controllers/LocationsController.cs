@@ -21,7 +21,7 @@ namespace SpotCollection.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location>>> GetLocation()
+        public async Task<ActionResult<IEnumerable<Location>>> GetAllLocations()
         {
             if (_context.Location is null)
             {
