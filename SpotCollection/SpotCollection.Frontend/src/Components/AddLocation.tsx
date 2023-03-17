@@ -13,6 +13,7 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
     const target = e.target as typeof e.target & {
       name: { value: string };
       country: { value: string };
+      closestCity: { value: string };
       description: { value: string };
       recommendedBook: { value: string };
       image: { value: string };
@@ -31,6 +32,7 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
       id: 0,
       name: target.name.value,
       country: target.country.value,
+      closestCity: target.closestCity.value,
       description: target.description.value,
       recommendedBook: target.recommendedBook.value,
       image: target.image.value,
@@ -51,6 +53,8 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
         <input type="text" name="name"></input>
         <label>Country of location:</label>
         <input type="text" name="country"></input>
+        <label>Add closest city for weather data:</label>
+        <input type="text" name="closestCity"></input>
         <label>Description:</label>
         <input type="text" name="description"></input>
         <label>Would you like to recommend a book?</label>

@@ -2,6 +2,7 @@ export interface ILocation {
     id: number;
     name: string;
     country: string;
+    closestCity: string;
     description: string;
     recommendedBook: string;
     image: string;

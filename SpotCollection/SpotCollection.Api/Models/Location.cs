@@ -8,6 +8,7 @@ public class Location
     public int Id { get; set; }
     public required string Name { get; set; }
     public required string Country { get; set; }
+    public string? ClosestCity { get; set; }
     public string? Description { get; set; }
     public string? RecommendedBook { get; set; }
     public string? Image { get; set; }
