@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ILocation } from "../interfaces";
 import "./Body.css";
+import { Weather } from "./Weather";
 
 type Locationprops = {
   locations: ILocation[];
@@ -34,6 +35,7 @@ const Location: FC<Locationprops> = ({ locations }) => {
           <p>
             <span className="title">Favourite route:</span> {x.favoriteRoute}
           </p>
+          <Weather locations={x}/>
           </div>
           <div className="imgBorder">
           <img className={x.name} src={x.image} alt="" />

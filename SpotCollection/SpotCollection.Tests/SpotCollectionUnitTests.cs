@@ -41,10 +41,10 @@ public abstract class SpotCollectionUnitTests
             var controller = new LocationsController(context);
 
             //act
-            var Locations = controller.GetAllLocations().ToList();
+            var locations = controller.GetAllLocations().Result.Value!.ToList();
 
             //assert
-            Assert.Equal(1, Locations.Count());
+            Assert.Equal(1, locations.Count());
         }
     }
 
