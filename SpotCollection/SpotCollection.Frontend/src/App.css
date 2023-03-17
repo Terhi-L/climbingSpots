@@ -16,8 +16,7 @@ img {
   }
 
   img {
-    width: 600px;
-    height: 600px;
+    height: 550px;
     object-position: 20% 50%;
 }
 }
