@@ -38,7 +38,7 @@ const ModifyLocation: FC<modifyProps> = ({
     setDescSuccess(true);
     const timer = setTimeout(() => {
       setDescSuccess(false);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timer);
   };
 
@@ -59,7 +59,7 @@ const ModifyLocation: FC<modifyProps> = ({
     setBookSuccess(true);
     const timer = setTimeout(() => {
       setBookSuccess(false);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timer);
   };
 
@@ -80,7 +80,7 @@ const ModifyLocation: FC<modifyProps> = ({
     setRouteSuccess(true);
     const timer = setTimeout(() => {
       setRouteSuccess(false);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timer);
   };
 
@@ -101,7 +101,7 @@ const ModifyLocation: FC<modifyProps> = ({
     setImageSuccess(true);
     const timer = setTimeout(() => {
       setImageSuccess(false);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timer);
   };
 

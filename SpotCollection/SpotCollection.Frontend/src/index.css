@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
 }
 
-button, .submitButton, a {
+button, .submitButton, .addLink {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 10px 15px;
@@ -32,7 +32,7 @@ button, .submitButton, a {
   text-decoration: inherit;
 }
 
-button:hover, .submitButton:hover, a:hover {
+button:hover, .submitButton:hover, .addLink:hover {
   color: var(--third-color);
   background-color: #6398E0;
   border-color: var(--third-color);

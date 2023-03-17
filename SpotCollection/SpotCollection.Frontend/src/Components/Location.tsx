@@ -10,13 +10,14 @@ const Location: FC<Locationprops> = ({ locations }) => {
   return (
     <>
       {locations.map((x) => (
-        <p key={x.id}>
+        <a href={`/#${x.id}`} key={x.id} className="jumpToLocation">
           {x.name}, {x.country}
-        </p>
+          <br/>
+        </a>
       ))}
       {locations.map((x) => (
-        <section className="locationBox" key={x.id}>
-          <div>
+        <section className="locationBox" key={x.id} id={`${x.id}`}>
+          <div className="locationBox__text">
           <h4 className="locationHeader">
             {x.name}, {x.country}
           </h4>
