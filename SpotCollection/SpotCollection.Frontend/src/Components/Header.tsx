@@ -54,17 +54,18 @@ const Header: FC<addLocationProps> = ({
     <>
       <header>
         <img src={romsdal} alt="" />
-        <section className="besideImage">
-          <h1>Favourite Climbing Spots -Collection</h1>
-          <p className="headerDescription">
-            A collection of favorite climbing spots along with a collection of
-            favorite wall at each location.
-            <br />
-            Add yours in and let's share our best tips!
-          </p>
-        </section>
+          <h1>
+            Favourite Climbing Spots
+            <br /> -Collection
+          </h1>
       </header>
       <main>
+        <p className="headerDescription">
+          A collection of favorite climbing spots along with a collection of
+          favorite wall at each location.
+          <br />
+          Add yours in and let's share our best tips!
+        </p>
         <nav>
           <BrowserRouter>
             {display && (
