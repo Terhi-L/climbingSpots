@@ -14,11 +14,10 @@ main {
 }
 
 .bodyText {
-    margin-top: -80px;
+    margin-top: 30px;
 }
 
 .besideImage {
-    padding-top: 40%;
     background-color: var(--third-color);
 }
 
@@ -43,10 +42,6 @@ h1 {
 }
 
 @media (min-width: 400px) {
-    .besideImage {
-        padding-top: 20%;
-    }
-
     .headerDescription {
         padding-left: 40px;
     }
@@ -70,12 +65,6 @@ h1 {
 }
 
 @media (min-width: 800px) {
-    img {
-        width: 500px;
-        height: 800px;
-        object-position: 20% 50%;
-    }
-
     header {
         margin-top: 40px;
         display: flex;
@@ -92,9 +81,10 @@ h1 {
     }
 
     .headerDescription {
-        margin-top: 150%;
+        position: absolute;
+        bottom: 0px;
         padding-left: 35px;
-        padding-right: 42px;
+        padding-right: 122px;
     }
 
     .addLink {
@@ -110,36 +100,17 @@ h1 {
 }
 
 @media (min-width: 1200px) {
-    header {
-        margin-top: 40px;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-
     h1 {
-        top: 38%;
-        left: 30%;
-    }
-
-    .headerDescription {
-        margin-top: 80%;
+        top: 48%;
+        left: 20%;
     }
 
     .addLink {
         margin-left: 80%;
     }
-}
 
-
-@media (min-width: 1300px) {
     .headerDescription {
-        margin-top: 60%;
+       top: 70%;
     }
-}
 
-@media (min-width: 1500px) {
-    .headerDescription {
-        margin-top: 50%;
-    }
 }
