@@ -20,6 +20,10 @@ const ModifyLocation: FC<modifyProps> = ({
   const [bookSuccess, setBookSuccess] = useState<boolean>(false);
   const [imageSuccess, setImageSuccess] = useState<boolean>(false);
   const [routeSuccess, setRouteSuccess] = useState<boolean>(false);
+  const [descError, setDescError] = useState<boolean>(false);
+  const [bookError, setBookError] = useState<boolean>(false);
+  const [imageError, setImageError] = useState<boolean>(false);
+  const [routeError, setRouteError] = useState<boolean>(false);
 
   const addDesc = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -34,6 +38,15 @@ const ModifyLocation: FC<modifyProps> = ({
       name: target.name.value,
       description: target.description.value,
     };
+
+    if (target.name.value === "" || target.description.value === "") {
+      setDescError(true);
+      const timer = setTimeout(() => {
+        setDescError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+
     addDescription(newDesc);
     setDescSuccess(true);
     const timer = setTimeout(() => {
@@ -55,6 +68,15 @@ const ModifyLocation: FC<modifyProps> = ({
       name: target.name.value,
       recommendedBook: target.recommendedBook.value,
     };
+
+    if (target.name.value === "" || target.recommendedBook.value === "") {
+      setBookError(true);
+      const timer = setTimeout(() => {
+        setBookError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+
     addBook(newBook);
     setBookSuccess(true);
     const timer = setTimeout(() => {
@@ -76,6 +98,15 @@ const ModifyLocation: FC<modifyProps> = ({
       name: target.name.value,
       favoriteRoute: target.favoriteRoute.value,
     };
+
+    if (target.name.value === "" || target.favoriteRoute.value === "") {
+      setRouteError(true);
+      const timer = setTimeout(() => {
+        setRouteError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+
     addRoute(newRoute);
     setRouteSuccess(true);
     const timer = setTimeout(() => {
@@ -97,6 +128,15 @@ const ModifyLocation: FC<modifyProps> = ({
       name: target.name.value,
       image: target.image.value,
     };
+
+    if (target.name.value === "" || target.image.value === "") {
+      setImageError(true);
+      const timer = setTimeout(() => {
+        setImageError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+
     addImage(newImage);
     setImageSuccess(true);
     const timer = setTimeout(() => {
@@ -123,6 +163,7 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {descSuccess && <p>✅ Success!</p>}
+      {descError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
 
       <h3>Recommend a book:</h3>
       <form onSubmit={addNewBook}>
@@ -140,6 +181,7 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {bookSuccess && <p>✅ Success!</p>}
+      {bookError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
 
       <h3>Your favourite climbing route:</h3>
       <form onSubmit={addNewRoute}>
@@ -157,6 +199,7 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {routeSuccess && <p>✅ Success!</p>}
+      {routeError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
 
       <h3>Add/change image:</h3>
       <form onSubmit={addNewImage}>
@@ -174,6 +217,7 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {imageSuccess && <p>✅ Success!</p>}
+      {imageError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
     </>
   );
 };

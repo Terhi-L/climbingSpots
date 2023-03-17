@@ -10,6 +10,10 @@ img {
   opacity: 90%;
 }
 
+.error {
+  color: red;
+}
+
 @media (min-width: 800px) {
   #root {
     margin: 25px;
@@ -18,5 +22,5 @@ img {
   img {
     height: 550px;
     object-position: 20% 50%;
-}
+  }
 }

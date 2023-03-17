@@ -139,11 +139,8 @@ namespace SpotCollection.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLocation(string name)
         {
-            if (name is null) return BadRequest();
-
             var location = _context.Location.Where(location => location.Name == name).FirstOrDefault();
             if (location is null) return NotFound();
-
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
             return NoContent();

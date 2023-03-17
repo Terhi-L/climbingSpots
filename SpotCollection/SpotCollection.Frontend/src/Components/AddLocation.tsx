@@ -7,6 +7,7 @@ type addLocationProps = {
 
 const AddLocation: FC<addLocationProps> = ({ location}) => {
   const [success, setSuccess] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const addLocation = (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -17,6 +18,14 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
       image: { value: string };
       favoriteRoute: { value: string };
     };
+
+    if (target.name.value === "" || target.country.value === "") {
+      setError(true);
+      const timer = setTimeout(() => {
+        setError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
 
     const newLocation: Partial<ILocation> = {
       id: 0,
@@ -53,6 +62,7 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
         <input className="submitButton" type="submit"></input>
       </form>
       {success && <p>✅ Success!</p>}
+      {error && <p className="error">Name and Country are required</p>}
     </>
   );
 };
