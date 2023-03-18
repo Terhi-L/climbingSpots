@@ -32,3 +32,8 @@ export interface ILocation {
     name: string;
     favoriteRoute: string;
   }
+
+  export interface IDelete {
+    id: number;
+    name: string;
+  }

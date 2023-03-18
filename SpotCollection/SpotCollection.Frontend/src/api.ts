@@ -1,5 +1,11 @@
-import { IBook, IDescription, IImage, ILocation, IRoute } from "./interfaces";
-
+import {
+  IBook,
+  IDescription,
+  IImage,
+  ILocation,
+  IRoute,
+  IDelete,
+} from "./interfaces";
 
 export const getLocations = async () => {
   const locations: ILocation[] = await fetch(
@@ -23,12 +29,23 @@ export const addLocation = async (addedLocation: Partial<ILocation>) => {
   return added;
 };
 
+export const removeLocation = async (values: IDelete) => {
+  await fetch(`http://localhost:5080/api/Locations/${values.id}`, {
+    method: "DELETE",
+    body: JSON.stringify(values.name),
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+  return values;
+};
+
 export const modifyDescription = async (addedDescription: IDescription) => {
   const request = {
     name: addedDescription.name,
     description: addedDescription.description,
   };
-  
+
   const added = await fetch(
     `http://localhost:5080/api/Locations/${addedDescription.id}/description`,
     {

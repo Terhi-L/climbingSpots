@@ -1,18 +1,28 @@
 import { FC, useState } from "react";
-import { IBook, IDescription, IImage, ILocation, IRoute } from "../interfaces";
+import {
+  IBook,
+  IDelete,
+  IDescription,
+  IImage,
+  ILocation,
+  IRoute,
+} from "../interfaces";
 import AddLocation from "./AddLocation";
 import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import ModifyLocation from "./ModifyLocation";
 import Gallery from "./Gallery";
 import "./Body.css";
 import romsdal from "../images/romsdal.jpeg";
+import RemoveLocation from "./RemoveLocation";
+import { removeLocation } from "../api";
 
 type addLocationProps = {
   addLocation: (loc: Partial<ILocation>) => void;
   addDescription: (desc: IDescription) => void;
   addBook: (book: IBook) => void;
-  addRoute: (book: IRoute) => void;
-  addImage: (book: IImage) => void;
+  addRoute: (route: IRoute) => void;
+  addImage: (image: IImage) => void;
+  deleteLocation: (loc: IDelete) => void;
   locations: ILocation[];
 };
 
@@ -22,6 +32,7 @@ const Header: FC<addLocationProps> = ({
   addBook,
   addRoute,
   addImage,
+  deleteLocation,
   locations,
 }) => {
   const [display, setDisplay] = useState<boolean>(true);
@@ -46,6 +57,10 @@ const Header: FC<addLocationProps> = ({
     addImage(image);
   };
 
+  const removeLoc = (removeSetup: IDelete) => {
+    deleteLocation(removeSetup);
+  };
+
   const displayLocations = () => {
     setDisplay(!display);
   };
@@ -54,10 +69,10 @@ const Header: FC<addLocationProps> = ({
     <>
       <header>
         <img src={romsdal} alt="" />
-          <h1>
-            Favourite Climbing Spots
-            <br /> -Collection
-          </h1>
+        <h1>
+          Favourite Climbing Spots
+          <br /> -Collection
+        </h1>
       </header>
       <main>
         <p className="headerDescription">
@@ -89,6 +104,17 @@ const Header: FC<addLocationProps> = ({
                   Modify a location
                 </Link>
               )}
+              <br />
+              <br />
+              {display && (
+                <Link
+                  className="addLink"
+                  to="/removelocation"
+                  onClick={displayLocations}
+                >
+                  Remove a location
+                </Link>
+              )}
               {!display && (
                 <Link className="addLink" to="/" onClick={displayLocations}>
                   Hide form
@@ -108,6 +134,15 @@ const Header: FC<addLocationProps> = ({
                     addImage={putImage}
                     addRoute={putRoute}
                     addDescription={putDesc}
+                    locations={locations}
+                  />
+                }
+              />
+              <Route
+                path="/removelocation"
+                element={
+                  <RemoveLocation
+                    deleteLocation={removeLoc}
                     locations={locations}
                   />
                 }

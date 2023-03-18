@@ -18,7 +18,6 @@ export const Weather: FC<Locationprops> = ({ locations }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.main.temp);
         setNewTemperature(Math.round(data.main.temp));
         let sky: string = data.weather[0].description;
         sky = sky.charAt(0).toUpperCase() + sky.slice(1);

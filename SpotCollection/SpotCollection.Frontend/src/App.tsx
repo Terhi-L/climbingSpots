@@ -7,8 +7,16 @@ import {
   modifyDescription,
   modifyImage,
   modifyRoute,
+  removeLocation,
 } from "./api";
-import { IBook, IDescription, IImage, ILocation, IRoute } from "./interfaces";
+import {
+  IBook,
+  IDelete,
+  IDescription,
+  IImage,
+  ILocation,
+  IRoute,
+} from "./interfaces";
 import Header from "./components/Header";
 
 function App() {
@@ -60,6 +68,11 @@ function App() {
     });
   };
 
+  const removeLoc = async (removeSetup: IDelete) => {
+    await removeLocation(removeSetup);
+    fetchData();
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -73,6 +86,7 @@ function App() {
         addBook={putBook}
         addImage={putImage}
         addRoute={putRoute}
+        deleteLocation={removeLoc}
       />
     </>
   );

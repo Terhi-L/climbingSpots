@@ -43,7 +43,7 @@ const ModifyLocation: FC<modifyProps> = ({
       setDescError(true);
       const timer = setTimeout(() => {
         setDescError(false);
-      }, 3000);
+      }, 2500);
       return () => clearTimeout(timer);
     }
 
@@ -163,7 +163,11 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {descSuccess && <p>✅ Success!</p>}
-      {descError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
+      {descError && (
+        <p className="error">
+          All fields are required - and make sure the Id is a number.
+        </p>
+      )}
 
       <h3>Recommend a book:</h3>
       <form onSubmit={addNewBook}>
@@ -181,7 +185,11 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {bookSuccess && <p>✅ Success!</p>}
-      {bookError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
+      {bookError && (
+        <p className="error">
+          All fields are required - and make sure the Id is a number.
+        </p>
+      )}
 
       <h3>Your favourite climbing route:</h3>
       <form onSubmit={addNewRoute}>
@@ -199,7 +207,11 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {routeSuccess && <p>✅ Success!</p>}
-      {routeError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
+      {routeError && (
+        <p className="error">
+          All fields are required - and make sure the Id is a number.
+        </p>
+      )}
 
       <h3>Add/change image:</h3>
       <form onSubmit={addNewImage}>
@@ -217,7 +229,11 @@ const ModifyLocation: FC<modifyProps> = ({
         <input className="submitButton" type="submit"></input>
       </form>
       {imageSuccess && <p>✅ Success!</p>}
-      {imageError && <p className="error">All fields are required - and make sure the Id is a number.</p>}
+      {imageError && (
+        <p className="error">
+          All fields are required - and make sure the Id is a number.
+        </p>
+      )}
     </>
   );
 };
