@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj": {}
+    "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj": {}
   },
   "projects": {
-    "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj": {
+    "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
+        "projectUniqueName": "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
         "projectName": "SpotCollection.Api",
-        "projectPath": "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
+        "projectPath": "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
         "packagesPath": "/Users/saltdev/.nuget/packages/",
-        "outputPath": "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/obj/",
+        "outputPath": "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/saltdev/.nuget/NuGet/NuGet.Config"

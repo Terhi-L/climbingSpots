@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2uP203Md4uczgaYh8F85M0xGmc37309DJHbwtT4tz/lEbQsdYXmNP+EKmDxqDQL+sRXzNZ1H6Vc+lKlgt42cqg==",
+  "dgSpecHash": "y5qSyguvMx6D6/EH/xOGLGdYxwGBDFlJhgEsNsOyPGFGxqDKhOketw910DXxxT2FPSy5NgkmjMcAP1UMeCHjNQ==",
   "success": true,
-  "projectFilePath": "/Users/saltdev/salt-labs/hackday/climbingSpots/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
+  "projectFilePath": "/Users/saltdev/salt-labs/hackday/climbingCollection/SpotCollection/SpotCollection.Api/SpotCollection.Api.csproj",
   "expectedPackageFiles": [
     "/Users/saltdev/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/saltdev/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
