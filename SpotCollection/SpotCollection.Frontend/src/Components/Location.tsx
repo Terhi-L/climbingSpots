@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ILocation } from "../interfaces";
 import "./Body.css";
-import { Weather } from "./Weather";
+import { Weather } from "../Components/Weather";
 
 type Locationprops = {
   locations: ILocation[];
