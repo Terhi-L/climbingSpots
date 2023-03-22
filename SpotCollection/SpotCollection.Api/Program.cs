@@ -22,14 +22,14 @@ using (var scope = app.Services.CreateScope())
 
 // Configure the HTTP request pipeline.
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseCors(policy =>
-  {
-      policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-  });
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseCors(policy =>
+{
+  policy.AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 
