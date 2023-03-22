@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useEffect, useState } from "react";
+import { FC, SyntheticEvent, useState } from "react";
 import { IDelete, ILocation } from "../interfaces";
 
 type removeLocationProps = {

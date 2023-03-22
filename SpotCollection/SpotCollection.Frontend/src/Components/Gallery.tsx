@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import Location from "./Location";
 import { ILocation } from "../interfaces";
 import "./Body.css";

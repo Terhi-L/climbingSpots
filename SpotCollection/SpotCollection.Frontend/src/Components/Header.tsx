@@ -14,7 +14,6 @@ import Gallery from "./Gallery";
 import "./Body.css";
 import romsdal from "../images/romsdal.jpeg";
 import RemoveLocation from "./RemoveLocation";
-import { removeLocation } from "../api";
 
 type addLocationProps = {
   addLocation: (loc: Partial<ILocation>) => void;
