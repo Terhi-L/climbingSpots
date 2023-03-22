@@ -9,7 +9,7 @@ import {
 
 export const getLocations = async () => {
   const locations: ILocation[] = await fetch(
-    "https://climbingspotscollectionapi.azurewebsites.net/api/Locations"
+    "https://climbingapi.azurewebsites.net/api/locations"
   )
     .then((response) => response.json())
     .then((data) => data);
@@ -17,7 +17,7 @@ export const getLocations = async () => {
 };
 
 export const addLocation = async (addedLocation: Partial<ILocation>) => {
-  const added = await fetch("https://climbingspotscollectionapi.azurewebsites.net/api/Locations", {
+  const added = await fetch("https://climbingapi.azurewebsites.net/api/locations", {
     method: "POST",
     body: JSON.stringify(addedLocation),
     headers: {
@@ -30,7 +30,7 @@ export const addLocation = async (addedLocation: Partial<ILocation>) => {
 };
 
 export const removeLocation = async (values: IDelete) => {
-  await fetch(`https://climbingspotscollectionapi.azurewebsites.net/api/Locations/${values.id}`, {
+  await fetch(`https://climbingapi.azurewebsites.net/api/locations/${values.id}`, {
     method: "DELETE",
     body: JSON.stringify(values.name),
     headers: {
@@ -47,7 +47,7 @@ export const modifyDescription = async (addedDescription: IDescription) => {
   };
 
   const added = await fetch(
-    `https://climbingspotscollectionapi.azurewebsites.net/api/Locations/${addedDescription.id}/description`,
+    `https://climbingapi.azurewebsites.net/api/locations/${addedDescription.id}/description`,
     {
       method: "PUT",
       body: JSON.stringify(request),
@@ -68,7 +68,7 @@ export const modifyImage = async (addedImage: IImage) => {
   };
 
   const added = await fetch(
-    `https://climbingspotscollectionapi.azurewebsites.net/api/Locations/${addedImage.id}/image`,
+    `https://climbingapi.azurewebsites.net/api/locations/${addedImage.id}/image`,
     {
       method: "PUT",
       body: JSON.stringify(request),
@@ -89,7 +89,7 @@ export const modifyRoute = async (addedRoute: IRoute) => {
   };
 
   const added = await fetch(
-    `https://climbingspotscollectionapi.azurewebsites.net/api/Locations/${addedRoute.id}/favoriteRoute`,
+    `https://climbingapi.azurewebsites.net/api/locations/${addedRoute.id}/favoriteRoute`,
     {
       method: "PUT",
       body: JSON.stringify(request),
@@ -110,7 +110,7 @@ export const modifyBook = async (addedBook: IBook) => {
   };
 
   const added = await fetch(
-    `https://climbingspotscollectionapi.azurewebsites.net/api/Locations/${addedBook.id}/recommendedBook`,
+    `https://climbingapi.azurewebsites.net/api/locations/${addedBook.id}/recommendedBook`,
     {
       method: "PUT",
       body: JSON.stringify(request),

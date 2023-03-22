@@ -1,5 +1,5 @@
-import { FC, useRef, useState } from "react";
-import { Location } from "./Location";
+import { FC, useEffect, useRef, useState } from "react";
+import Location from "./Location";
 import { ILocation } from "../interfaces";
 import "./Body.css";
 
@@ -7,7 +7,7 @@ type Locationprops = {
   locations: ILocation[];
 };
 
-export const Gallery: FC<Locationprops> = ({ locations }) => {
+const Gallery: FC<Locationprops> = ({ locations }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [newLocations, setNewLocations] = useState<ILocation[]>([]);
   const [showSelection, setShowSelection] = useState<boolean>(false);
@@ -29,7 +29,7 @@ export const Gallery: FC<Locationprops> = ({ locations }) => {
 
   return (
     <section className="bodyText">
-      <p>Search by location:</p>
+        <p>Search by location:</p>
       <input
         list="suggestions"
         type="Search"
@@ -66,3 +66,4 @@ export const Gallery: FC<Locationprops> = ({ locations }) => {
   );
 };
 
+export default Gallery;

@@ -7,13 +7,14 @@ import {
   ILocation,
   IRoute,
 } from "../interfaces";
-import { AddLocation } from "./AddLocation";
+import AddLocation from "./AddLocation";
 import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
-import { ModifyLocation } from "./ModifyLocation";
-import { Gallery } from "./Gallery";
+import ModifyLocation from "./ModifyLocation";
+import Gallery from "./Gallery";
 import "./Body.css";
 import romsdal from "../images/romsdal.jpeg";
 import RemoveLocation from "./RemoveLocation";
+import { removeLocation } from "../api";
 
 type addLocationProps = {
   addLocation: (loc: Partial<ILocation>) => void;
@@ -25,7 +26,7 @@ type addLocationProps = {
   locations: ILocation[];
 };
 
-export const Header: FC<addLocationProps> = ({
+const Header: FC<addLocationProps> = ({
   addLocation,
   addDescription,
   addBook,
@@ -155,3 +156,5 @@ export const Header: FC<addLocationProps> = ({
     </>
   );
 };
+
+export default Header;

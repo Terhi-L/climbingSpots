@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { ILocation } from "../interfaces";
 import "./Body.css";
-import { Weather } from "../Components/Weather";
+import { Weather } from "./Weather";
 
 type Locationprops = {
   locations: ILocation[];
 };
 
-export const Location: FC<Locationprops> = ({ locations }) => {
+const Location: FC<Locationprops> = ({ locations }) => {
   return (
     <>
       {locations.map((x) => (
@@ -46,3 +46,4 @@ export const Location: FC<Locationprops> = ({ locations }) => {
   );
 };
 
+export default Location;
