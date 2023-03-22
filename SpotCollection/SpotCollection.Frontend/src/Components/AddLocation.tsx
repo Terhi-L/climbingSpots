@@ -5,7 +5,7 @@ type addLocationProps = {
   location: (loc: Partial<ILocation>) => void;
 };
 
-const AddLocation: FC<addLocationProps> = ({ location}) => {
+export const AddLocation: FC<addLocationProps> = ({ location}) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const addLocation = (e: SyntheticEvent) => {
@@ -71,4 +71,3 @@ const AddLocation: FC<addLocationProps> = ({ location}) => {
   );
 };
 
-export default AddLocation;

@@ -9,7 +9,7 @@ type modifyProps = {
   locations: ILocation[];
 };
 
-const ModifyLocation: FC<modifyProps> = ({
+export const ModifyLocation: FC<modifyProps> = ({
   addDescription,
   addBook,
   addRoute,
@@ -239,4 +239,3 @@ const ModifyLocation: FC<modifyProps> = ({
   );
 };
 
-export default ModifyLocation;

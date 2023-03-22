@@ -7,7 +7,7 @@ type Locationprops = {
   locations: ILocation[];
 };
 
-const Location: FC<Locationprops> = ({ locations }) => {
+export const Location: FC<Locationprops> = ({ locations }) => {
   return (
     <>
       {locations.map((x) => (
@@ -46,4 +46,3 @@ const Location: FC<Locationprops> = ({ locations }) => {
   );
 };
 
-export default Location;

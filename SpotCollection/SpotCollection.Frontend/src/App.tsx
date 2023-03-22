@@ -17,7 +17,8 @@ import {
   ILocation,
   IRoute,
 } from "./interfaces";
-import Header from "./components/Header";
+import { Header } from "./components/Header";
+
 
 function App() {
   const [locations, setLocations] = useState<ILocation[]>([]);
