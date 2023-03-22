@@ -129,6 +129,7 @@ const ModifyLocation: FC<modifyProps> = ({
       image: target.image.value,
     };
 
+    
     if (target.name.value === "" || target.image.value === "") {
       setImageError(true);
       const timer = setTimeout(() => {
